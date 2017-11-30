@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "prac2"
 require 'benchmark'
-require ’coveralls’
+require "coveralls"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
