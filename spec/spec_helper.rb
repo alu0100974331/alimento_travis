@@ -1,7 +1,9 @@
+require "coveralls"
+Coveralls.wear!
 require "bundler/setup"
 require "prac2"
 require 'benchmark'
-require "coveralls"
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -14,4 +16,4 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
-Coveralls.wear!
+
