@@ -56,17 +56,7 @@ RSpec.describe "#IG del alimento" do
     expect(@vec.sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
   end
 
-  Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
-    @manzana = Frutas.new("Manzana", 0.3, 12.4, 0.4)
-    @yogurt = Huevos_lacteos_helados.new("Yogurt", 3.8, 4.9, 3.8)
-    @azucar = Alimentos_carbohidratos.new("Azucar", 0.0, 99.8, 0.0)                         #manzana, yogurt,azucar
-    @azucar1 = Alimentos_carbohidratos.new("Azucar", 0.0, 94.8, 0.0)
-    @azucar2 = Alimentos_carbohidratos.new("Azucar", 0.0, 90.8, 0.0)
-    @vec = [@yogurt,@azucar,@manzana,@azucar1,@azucar2]
-    tf = x.report("metodo for")   {@vec.burbuja }
-    tf = x.report("metodo each")   {@vec.each_sort}
-    tf = x.report("metodo sort")   {@vec.sort}
-  end
+  
 
   # it 'AIBC Imperativo' do
   #   expect(@manzana.aibc_imperative).to eq([27.999999999999993, 183.25])
@@ -84,3 +74,14 @@ RSpec.describe "#IG del alimento" do
   # end
 end
 
+Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
+    @manzana = Frutas.new("Manzana", 0.3, 12.4, 0.4)
+    @yogurt = Huevos_lacteos_helados.new("Yogurt", 3.8, 4.9, 3.8)
+    @azucar = Alimentos_carbohidratos.new("Azucar", 0.0, 99.8, 0.0)                         #manzana, yogurt,azucar
+    @azucar1 = Alimentos_carbohidratos.new("Azucar", 0.0, 94.8, 0.0)
+    @azucar2 = Alimentos_carbohidratos.new("Azucar", 0.0, 90.8, 0.0)
+    @vec = [@yogurt,@azucar,@manzana,@azucar1,@azucar2]
+    tf = x.report("metodo for")   {@vec.burbuja }
+    tf = x.report("metodo each")   {@vec.each_sort}
+    tf = x.report("metodo sort")   {@vec.sort}
+end
