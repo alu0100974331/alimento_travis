@@ -1,5 +1,6 @@
 require "spec_helper"
 include Benchmark
+
 # node = Struct.new :value, :next, :prev
 # nodo0[:value] = false
 # bacalao= Pescados.new("bacalao",17.7,0.0,0.4)
@@ -45,32 +46,26 @@ RSpec.describe "#IG del alimento" do
     # x=0
     # puts (@vec.impr(x))
   end
-  # it 'Método for' do
-  #   expect(@vec.burbuja).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-  # end
-  # it 'Método each' do
-  #   expect(@vec.each_sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-  # end
-  # it 'Método sort' do
-  #   expect(@vec.sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-  # end
+  it 'Método for' do
+    expect(@vec.burbuja).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
+  end
+  it 'Método each' do
+    expect(@vec.each_sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
+  end
+  it 'Método sort' do
+    expect(@vec.sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
+  end
 
   Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
-    tf = x.report("metodo for")   {   
-      it 'Método for' do
-        expect(@vec.burbuja).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-      end 
-    }
-    tf = x.report("metodo each")   {   
-      it 'Método each' do
-        expect(@vec.each_sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-      end 
-    }
-    tf = x.report("metodo sort")   {   
-      it 'Método sort' do
-        expect(@vec.sort).to eq([@manzana,@yogurt,@azucar2,@azucar1,@azucar])
-      end 
-    }
+    @manzana = Frutas.new("Manzana", 0.3, 12.4, 0.4)
+    @yogurt = Huevos_lacteos_helados.new("Yogurt", 3.8, 4.9, 3.8)
+    @azucar = Alimentos_carbohidratos.new("Azucar", 0.0, 99.8, 0.0)                         #manzana, yogurt,azucar
+    @azucar1 = Alimentos_carbohidratos.new("Azucar", 0.0, 94.8, 0.0)
+    @azucar2 = Alimentos_carbohidratos.new("Azucar", 0.0, 90.8, 0.0)
+    @vec = [@yogurt,@azucar,@manzana,@azucar1,@azucar2]
+    tf = x.report("metodo for")   {@vec.burbuja }
+    tf = x.report("metodo each")   {@vec.each_sort}
+    tf = x.report("metodo sort")   {@vec.sort}
   end
 
   # it 'AIBC Imperativo' do
